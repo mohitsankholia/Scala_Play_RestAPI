@@ -1,0 +1,25 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+#To get all to-do list items
+GET     /todo                       controllers.TodoListController.getAll
+
+#To get to-do list item by itemId
+GET    /todo/:itemId                controllers.TodoListController.getById(itemId: Long)
+
+#To insert a new to-do list
+POST   /todo                        controllers.TodoListController.addNewItem
+
+#To alter or mark to-do list
+PUT     /todo/done/:itemId          controllers.TodoListController.markAsDone(itemId: Long)
+
+#To delete item from to-do list
+DELETE  /todo/delete/:deleteId      controllers.TodoListController.deleteAllDone(deleteId: Integer)
